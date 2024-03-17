@@ -1,36 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>E'lonlar doskasi</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-        <link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Responsive navbar-->
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <div class="container px-lg-5">
-                <a class="navbar-brand" href="#!"><i class="bi bi-clipboard-check"></i> E'lonlar doskasi</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" href="#!"><i class="bi bi-layout-text-sidebar-reverse"></i> Mening e'lonlarim</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!"><i class="bi bi-person-plus-fill"></i> Registratsiya</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!"><i class="bi bi-box-arrow-left"></i> Chiqish</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+{% extends 'base.html' %}
+{% block content %}
         <!-- Header-->
         <header class="py-5">
         <!-- Page Content-->
@@ -43,7 +12,7 @@
                     <p>Bu sayt orqali siz o'z e'lonlaringizni bepulga joylashtirib borishingiz
                     mumkin bo'ladi. Istalgan kategoriyangizni tanlang va o'zingiz xohlagan
                     e'loningizni joylashtiring</p>
-                    <a class="btn btn-primary" href="#!">E'lon joylashtirish</a>
+                    <a class="btn btn-primary" href="{% url 'create_ad_url' %}">E'lon joylashtirish</a>
                 </div>
             </div>
             <!-- Call to Action-->
@@ -69,7 +38,7 @@
             <div class="container px-lg-5">
                 <!-- Page Features-->
                 <div class="row gx-lg-5">
-                    
+
                         <div class="col-lg-6 col-xxl-4 mb-5">
                             <a href="#" class="category-poster">
                             <div class="card bg-light border-0 h-100">
@@ -127,110 +96,21 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
+                        {% for i in ad %}
                         <div class="col-lg-3 mb-3">
                             <div class="card">
-                                <a href="#"><img src="./assets/elon/elon1.jpg" class="card-img-top img-poster" alt=""></a>
+                                <a href="{% url 'single_ad_url' i.id %}"><img src="{{ i.img.url }}" class="card-img-top img-poster" alt=""></a>
                                 <div class="card-body">
                                 <div class="poster-title-cont">
-                                    <a href="#" class="poster-link"><span class="card-title poster-title poster-link">Card title</span></a>
+                                    <a href="{% url 'single_ad_url' i.id %}" class="poster-link"><span class="card-title poster-title poster-link">{{ i.title }}</span></a>
                                 </div>
-                                <p class="card-text" style="margin: 0">Toshkent viloyati.</p>
-                                <p class="card-text">- 11.07.2021 15:56</p>
-                                <h5 class="card-subtitle mb-2">380 000 SO'M</h5>
+                                <p class="card-text" style="margin: 0">{{ i.address }}</p>
+                                <p class="card-text">{{ i.date }}</p>
+                                <h5 class="card-subtitle mb-2">{{ i.price }}SO'M</h5>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 mb-3">
-                            <div class="card">
-                                <a href="#"><img src="./assets/elon/elon2.jpg" class="card-img-top img-poster" alt=""></a>
-                                <div class="card-body">
-                                <div class="poster-title-cont">
-                                    <a href="#" class="poster-link"><span class="card-title poster-title poster-link">Chevrolet Captiva 2020 god vipuska probeg 100 000 km garantiya</span></a>
-                                </div>
-                                <p class="card-text" style="margin: 0">Toshkent viloyati.</p>
-                                <p class="card-text">- 11.07.2021 15:56</p>
-                                <h5 class="card-subtitle mb-2">380 000 SO'M</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                            <div class="card">
-                                <a href="#"><img src="./assets/elon/elon3.jpg" class="card-img-top img-poster" alt=""></a>
-                                <div class="card-body">
-                                <div class="poster-title-cont">
-                                    <a href="#" class="poster-link"><span class="card-title poster-title poster-link">Card title</span></a>
-                                </div>
-                                <p class="card-text" style="margin: 0">Toshkent viloyati.</p>
-                                <p class="card-text">- 11.07.2021 15:56</p>
-                                <h5 class="card-subtitle mb-2">380 000 SO'M</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                            <div class="card">
-                                <a href="#"><img src="./assets/elon/elon4.jpg" class="card-img-top img-poster" alt=""></a>
-                                <div class="card-body">
-                                <div class="poster-title-cont">
-                                    <a href="#" class="poster-link"><span class="card-title poster-title poster-link">Card title</span></a>
-                                </div>
-                                <p class="card-text" style="margin: 0">Toshkent viloyati.</p>
-                                <p class="card-text">- 11.07.2021 15:56</p>
-                                <h5 class="card-subtitle mb-2">380 000 SO'M</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                            <div class="card">
-                                <a href="#"><img src="./assets/elon/elon5.jpg" class="card-img-top img-poster" alt=""></a>
-                                <div class="card-body">
-                                <div class="poster-title-cont">
-                                    <a href="#" class="poster-link"><span class="card-title poster-title poster-link">Card title</span></a>
-                                </div>
-                                <p class="card-text" style="margin: 0">Toshkent viloyati.</p>
-                                <p class="card-text">- 11.07.2021 15:56</p>
-                                <h5 class="card-subtitle mb-2">380 000 SO'M</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                            <div class="card">
-                                <a href="#"><img src="./assets/elon/elon6.jpg" class="card-img-top img-poster" alt=""></a>
-                                <div class="card-body">
-                                <div class="poster-title-cont">
-                                    <a href="#" class="poster-link"><span class="card-title poster-title poster-link">Card title</span></a>
-                                </div>
-                                <p class="card-text" style="margin: 0">Toshkent viloyati.</p>
-                                <p class="card-text">- 11.07.2021 15:56</p>
-                                <h5 class="card-subtitle mb-2">380 000 SO'M</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                            <div class="card">
-                                <a href="#"><img src="./assets/elon/elon7.jpg" class="card-img-top img-poster" alt=""></a>
-                                <div class="card-body">
-                                <div class="poster-title-cont">
-                                    <a href="#" class="poster-link"><span class="card-title poster-title poster-link">Card title</span></a>
-                                </div>
-                                <p class="card-text" style="margin: 0">Toshkent viloyati.</p>
-                                <p class="card-text">- 11.07.2021 15:56</p>
-                                <h5 class="card-subtitle mb-2">380 000 SO'M</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 mb-3">
-                            <div class="card">
-                                <a href="#"><img src="./assets/elon/elon8.jpg" class="card-img-top img-poster" alt=""></a>
-                                <div class="card-body">
-                                <div class="poster-title-cont">
-                                    <a href="#" class="poster-link"><span class="card-title poster-title poster-link">Card title</span></a>
-                                </div>
-                                <p class="card-text" style="margin: 0">Toshkent viloyati.</p>
-                                <p class="card-text">- 11.07.2021 15:56</p>
-                                <h5 class="card-subtitle mb-2">380 000 SO'M</h5>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                         <div class="col-auto m-auto mt-3 mb-5">
                             <button type="submit" class="btn btn-outline-secondary btn-lg mb-3">Barcha e'lonlar...</button>
                         </div>
@@ -238,14 +118,4 @@
                 </div>
             </div>
         </div>
-
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; E'lonlar doskasi 2021</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="{% static 'js/scripts.js' %}"></script>
-    </body>
-</html>
+{% endblock %}
